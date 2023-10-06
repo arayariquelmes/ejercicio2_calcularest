@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CalculoController {
-    @Autowired
+
     private CalculoService calculoService;
+    @Autowired
+    public CalculoController(CalculoService calculoService){
+        this.calculoService = calculoService;
+    }
 
     @PostMapping("/calcular")
     public ResponseEntity<CalculoResponse> calcular(@RequestBody CalculoRequest calculoRequest){
